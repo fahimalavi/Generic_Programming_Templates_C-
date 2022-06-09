@@ -1,16 +1,22 @@
 #include <iostream>
+#include <string>
 #include "lib/inc/vector.h"
 #include "lib/inc/vector_template.h"
+#include "lib/inc/inheritance.h"
 
 using namespace std;
 
 inline void use_simple_vector();
 inline void use_template_vector();
+inline void templates();
+inline void inheritance();
 
 int main()
 {
-    //use_simple_vector();
-    use_template_vector();
+    use_simple_vector();
+    //use_template_vector();
+    //templates();
+    //inheritance();
 }
 
 // Simple use of Vector file
@@ -36,9 +42,10 @@ inline void use_simple_vector()
 
 inline void use_template_vector()
 {
-    Vector_template<double> a;
-    Vector_template<int> b(5);
-    Vector_template<float> *c = new Vector_template(3, 100.0f);
+    Vector_template<double> a(2);
+    Vector_template<string> *c = new Vector_template(3, string("hello"));
+    Vector_template<double> b(5, 1.0);
+
 
     cout << "Vector_template A size " << a.get_size()<<endl;
     cout << "Vector_template B size " << b.get_size()<<endl;
@@ -52,4 +59,34 @@ inline void use_template_vector()
     cout <<endl;
     delete c;
     cout <<"Program ending"<<endl;
+}
+
+void templates()
+{
+    Number<int> i(55);
+    cout << i.getValue() << endl;
+
+    Number<int> j(56,1);
+    cout << j.getValue() << endl;
+
+    Number<double> d(55.66);
+    cout << d.getValue() << endl;
+
+    Number<char> c('a');
+    cout << c.getValue() << endl;
+
+    Number<string> s("Hello");
+    cout << s.getValue() << endl;
+}
+
+
+inline void inheritance()
+{
+    const int size=10;
+    Vector_Container a(size, 7);
+    for(auto i = 0; i< size; i++)
+    {
+        cout<<a[i];
+    }
+    cout<<endl;
 }

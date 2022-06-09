@@ -1,6 +1,5 @@
 
 class Vector {
-    int b;
     private:
         int *a;
         int sz;
