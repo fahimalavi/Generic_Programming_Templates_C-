@@ -3,6 +3,7 @@
 #include "lib/inc/vector.h"
 #include "lib/inc/vector_template.h"
 #include "lib/inc/inheritance.h"
+#include "lib/inc/polymorphic_template.h"
 
 using namespace std;
 
@@ -10,13 +11,15 @@ inline void use_simple_vector();
 inline void use_template_vector();
 inline void templates();
 inline void inheritance();
+inline void polymorphic_template();
 
 int main()
 {
-    use_simple_vector();
+    //use_simple_vector();
     //use_template_vector();
     //templates();
-    //inheritance();
+    //inheritance(); 
+    polymorphic_template();
 }
 
 // Simple use of Vector file
@@ -89,4 +92,14 @@ inline void inheritance()
         cout<<a[i];
     }
     cout<<endl;
+}
+
+inline void polymorphic_template()
+{
+    Polymorphic_Template_Base *data1 = new Derived_from_child<Derived<Polymorphic_Template_Base>>();
+    Derived<Polymorphic_Template_Base> *data2 = new Derived<Polymorphic_Template_Base>();
+    Derived_from_child<Derived<Polymorphic_Template_Base>> *data3 = new Derived_from_child<Derived<Polymorphic_Template_Base>>();
+    cout<<data1->print()<<endl;
+    cout<<data2->print()<<endl;
+    cout<<data3->print()<<endl;
 }
